@@ -1,5 +1,9 @@
+import { Suspense } from "react";
 import Navbar from "./components/Navbar";
+import OrderContainer from "./components/OrderContainer";
 import TitleSection from "./components/TitleSection";
+
+const ordersPromise = fetch("/orders.json").then((res) => res.json());
 
 const App = () => {
   return (
@@ -8,9 +12,12 @@ const App = () => {
         <Navbar />
       </header>
       <section>
-        <TitleSection>
-          Kitchen Room
-        </TitleSection>
+        <TitleSection>Kitchen Room</TitleSection>
+      </section>
+      <section>
+        <Suspense fallback={<h2>Loading....</h2>}>
+          <OrderContainer ordersPromise={ordersPromise} />
+        </Suspense>
       </section>
     </>
   );
