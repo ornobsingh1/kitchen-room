@@ -1,10 +1,18 @@
-import React from 'react';
+import Navbar from "./components/Navbar";
+import TitleSection from "./components/TitleSection";
 
 const App = () => {
   return (
-    <div>
-      hello i am from app
-    </div>
+    <>
+      <header className="w-11/12 mx-auto py-3">
+        <Navbar />
+      </header>
+      <section>
+        <TitleSection>
+          Kitchen Room
+        </TitleSection>
+      </section>
+    </>
   );
 };
 
