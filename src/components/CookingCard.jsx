@@ -1,4 +1,6 @@
-const CookingCard = ({ order }) => {
+import { toast } from "react-toastify";
+
+const CookingCard = ({ order, handleCooking }) => {
   return (
     <div
       className="rounded-xl p-5 shadow hover:shadow-lg"
@@ -22,7 +24,22 @@ const CookingCard = ({ order }) => {
       </p>
 
       {/* Static Button */}
-      <button className="px-6 mt-3 py-1 shadow text-sm hover:bg-black hover:text-white bg-white cursor-pointer rounded-xl">
+      <button
+        onClick={() => {
+          toast.success("Food Cooked", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+          handleCooking(order);
+        }}
+        className="px-6 mt-3 py-1 shadow text-sm hover:bg-black hover:text-white bg-white cursor-pointer rounded-xl"
+      >
         Cooked?
       </button>
     </div>
